@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 
 function Detail() {
   const { id } = useParams();
@@ -20,17 +21,38 @@ function Detail() {
   }, []);
 
   return (
-    <div>
-      <h1>{loading ? "Waiting..." : `${details.title}`}</h1>
+    <Container>
+      <DetailTitle>{loading ? "Waiting..." : `${details.title}`}</DetailTitle>
       {loading ? (
         <div></div>
       ) : (
         <div>
-          <img src={details.medium_cover_image} />
+          <DetailImage src={details.medium_cover_image} />
+          <DetailDescription>{details.description_full}</DetailDescription>
         </div>
       )}
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+`;
+
+const DetailTitle = styled.h1`
+  display: flex;
+  font-size: 2.5rem;
+`;
+
+const DetailImage = styled.img`
+  display: flex;
+`;
+
+const DetailDescription = styled.div`
+  display: flex;
+  margin-top: 3rem;
+`;
 
 export default Detail;

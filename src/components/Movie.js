@@ -6,6 +6,7 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   width: auto;
+  user-select: none;
 `;
 
 const MovieBox = styled.div`
